@@ -44,5 +44,6 @@ if __name__ == "__main__":
     for name in SUBREDDIT_LIST:
         logging.info(name)
         info = get_subreddit_info(name)
-        with gzip.open(os.path.join("./data", name + ".json.gz"), "at") as f_out:
-            f_out.write(json.dumps(info) + "\n")
+        if info:
+            with gzip.open(os.path.join("./data", name + ".json.gz"), "at") as f_out:
+                f_out.write(json.dumps(info) + "\n")
